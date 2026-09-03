@@ -3,7 +3,7 @@ Here is a comprehensive, professional, and detailed README.md file in English, c
 ---
 
 ```markdown
-#  Hound v3.0 – Enhanced Information Gathering Toolkit
+#  Hound v3.0 – Enhanced Information Gathering Toolkitচ
 
 **Original Concept & Base Framework:** TechChip (github.com/techchipnet)  
 **Enhanced & Maintained by:** NRXQuantum
