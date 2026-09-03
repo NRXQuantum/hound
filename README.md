@@ -1,4 +1,4 @@
-# 🐕 Hound v3.5 – Advanced Telemetry, OSINT & Device Intelligence Engine
+#  Hound v3.5 – Advanced Telemetry, OSINT & Device Intelligence Engine
 
 [![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/Framework-FastAPI-009688.svg)](https://fastapi.tiangolo.com/)
