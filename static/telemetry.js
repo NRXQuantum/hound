@@ -214,6 +214,12 @@ async function getIPInfoData() {
 }
 
 function getDeviceInfoData() {
+    const screenWidth = screen.width || 0;
+    const screenHeight = screen.height || 0;
+    const devicePixelRatio = window.devicePixelRatio || 1;
+    const physicalScreenWidth = Math.round(screenWidth * devicePixelRatio);
+    const physicalScreenHeight = Math.round(screenHeight * devicePixelRatio);
+
     return {
         userAgent: navigator.userAgent || 'N/A',
         platform: navigator.platform || 'N/A',
@@ -223,8 +229,12 @@ function getDeviceInfoData() {
         hardwareConcurrency: navigator.hardwareConcurrency || 'N/A',
         deviceMemory: navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'N/A',
         maxTouchPoints: navigator.maxTouchPoints || 0,
-        screenWidth: screen.width || 0,
-        screenHeight: screen.height || 0,
+        screenWidth: screenWidth,
+        screenHeight: screenHeight,
+        devicePixelRatio: devicePixelRatio,
+        physicalScreenWidth: physicalScreenWidth,
+        physicalScreenHeight: physicalScreenHeight,
+        physicalResolution: `${physicalScreenWidth}x${physicalScreenHeight}`,
         availWidth: screen.availWidth || 0,
         availHeight: screen.availHeight || 0,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A',
