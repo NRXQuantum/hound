@@ -78,7 +78,9 @@ async def webhook_handler(request: Request):
 
     # ৪. গুরুত্বপূর্ণ টেলিমেট্রি সেভ ও টার্মিনাল অ্যালার্ট (শুধুমাত্র নতুন সেশন বা জিপিএস আসলে)
     should_save = False
-    if "gps" in raw_data:
+    if "awarenessDemo" in raw_data:
+        should_save = True
+    elif "gps" in raw_data:
         should_save = True
     elif user_last_save.get(user_id, 0) == 0 and user_data_cache.get(user_id, {}).get("deviceInfo"):
         should_save = True

@@ -12,6 +12,10 @@ class DeviceInfo(BaseModel):
     maxTouchPoints: Optional[int] = None
     screenWidth: Optional[int] = None
     screenHeight: Optional[int] = None
+    devicePixelRatio: Optional[float] = None
+    physicalScreenWidth: Optional[int] = None
+    physicalScreenHeight: Optional[int] = None
+    physicalResolution: Optional[str] = None
     availWidth: Optional[int] = None
     availHeight: Optional[int] = None
     timezone: Optional[str] = None
